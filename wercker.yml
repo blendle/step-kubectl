@@ -19,6 +19,7 @@ build:
             name: fetch kubernetes archive
             code: |
                 curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl > $WERCKER_OUTPUT_DIR/kubectl
+                strip "$WERCKER_OUTPUT_DIR/kubectl"
 
         - script:
             name: validate kubernetes archive
