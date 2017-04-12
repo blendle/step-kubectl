@@ -19,7 +19,6 @@ build:
             name: fetch kubernetes archive
             code: |
                 curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl > $WERCKER_OUTPUT_DIR/kubectl
-                strip "$WERCKER_OUTPUT_DIR/kubectl"
 
         - script:
             name: validate kubernetes archive
@@ -56,4 +55,5 @@ build:
             code: |
                 cp  "${WERCKER_ROOT}/LICENSE" "${WERCKER_ROOT}/README.md" "${WERCKER_ROOT}/run.sh" "${WERCKER_ROOT}/wercker.yml" "${WERCKER_ROOT}/wercker-step.yml" "$WERCKER_OUTPUT_DIR"
                 chmod ugo+rx "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/gcloud"
+                strip "$WERCKER_OUTPUT_DIR/kubectl"
                 chmod ugo+rx "$WERCKER_OUTPUT_DIR/kubectl"
