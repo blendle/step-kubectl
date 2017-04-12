@@ -1,4 +1,4 @@
-box: debian
+box: wercker/default
 build:
     steps:
         - shellcheck
@@ -14,11 +14,6 @@ build:
                 export GCLOUD_FILENAME="${GCLOUD_DIRNAME}-${GCLOUD_VERSION}.tar.gz"
                 export GCLOUD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${GCLOUD_FILENAME}"
                 echo "Installing version $KUBERNETES_VERSION of kubernetes and ${GCLOUD_VERSION} of the Google Cloud SDK"
-
-        - script: 
-            name: install curl
-            code: |
-                apt-get update && apt-get install -yy curl python
 
         - script:
             name: fetch kubernetes archive
