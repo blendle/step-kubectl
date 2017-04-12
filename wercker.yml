@@ -1,4 +1,4 @@
-box: wercker/default
+box: debian
 build:
     steps:
         - shellcheck
@@ -6,14 +6,19 @@ build:
         - script:
             name: config
             code: |
-                GCLOUD_VERSION="127.0.0-linux-x86_64"
+                GCLOUD_VERSION="150.0.0-linux-x86_64"
                 export GCLOUD_DIRNAME="google-cloud-sdk"
-                export KUBERNETES_VERSION="1.3.4"
-                export KUBERNETES_SHA256="81f0e3c788241419be1ee961da8804fdb16657b86e7edba8c7070932e8a50fe7"
-                export GCLOUD_SHA="45abe78986b0ff9a147904aaf20d552fa4ad6f29"
+                export KUBERNETES_VERSION="1.6.1"
+                export KUBERNETES_SHA256="4d36675f8239d31c0831cfcb956eb07604cf70a7739233597bce0e87e46c42b0"
+                export GCLOUD_SHA256="8a2d203ff12e0d52cc8aa54f09b3c2a8e7db86737284fa90d2ae453cae52c6e0"
                 export GCLOUD_FILENAME="${GCLOUD_DIRNAME}-${GCLOUD_VERSION}.tar.gz"
                 export GCLOUD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${GCLOUD_FILENAME}"
                 echo "Installing version $KUBERNETES_VERSION of kubernetes and ${GCLOUD_VERSION} of the Google Cloud SDK"
+
+        - script: 
+            name: install curl
+            code: |
+                apt-get update && apt-get install -yy curl python
 
         - script:
             name: fetch kubernetes archive
@@ -23,7 +28,7 @@ build:
         - script:
             name: validate kubernetes archive
             code: |
-                cat $WERCKER_OUTPUT_DIR/kubectl| sha256sum | grep -q "$KUBERNETES_SHA256"
+                sha256sum $WERCKER_OUTPUT_DIR/kubectl | grep -q "$KUBERNETES_SHA256"
 
         - script:
             name: Fetch gcloud archive
@@ -33,7 +38,7 @@ build:
         - script:
             name: Validate gcloud archive
             code: |
-                sha1sum ${GCLOUD_FILENAME} | grep -q "${GCLOUD_SHA}"
+                sha256sum ${GCLOUD_FILENAME} | grep -q "$GCLOUD_SHA256"
 
         - script:
             name: Extract gcloud archive
