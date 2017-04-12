@@ -58,4 +58,4 @@ build:
                 strip -s "$WERCKER_OUTPUT_DIR/kubectl"
                 rm "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/kubectl"
                 chmod ugo+rx "$WERCKER_OUTPUT_DIR/kubectl"
-		ln -s "$WERCKER_OUTPUT_DIR/kubectl" "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/kubectl"
+                ln -s "$WERCKER_OUTPUT_DIR/kubectl" "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/kubectl"
