@@ -58,5 +58,6 @@ build:
                 strip -s "$WERCKER_OUTPUT_DIR/kubectl"
                 rm -r "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/help"
                 rm "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/kubectl"
+                find "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}" | egrep '\.pyc$' |xargs rm 
                 chmod ugo+rx "$WERCKER_OUTPUT_DIR/kubectl"
                 ln -s "$WERCKER_OUTPUT_DIR/kubectl" "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/kubectl"
