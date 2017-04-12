@@ -56,6 +56,7 @@ build:
                 cp  "${WERCKER_ROOT}/LICENSE" "${WERCKER_ROOT}/README.md" "${WERCKER_ROOT}/run.sh" "${WERCKER_ROOT}/wercker.yml" "${WERCKER_ROOT}/wercker-step.yml" "$WERCKER_OUTPUT_DIR"
                 chmod ugo+rx "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/gcloud"
                 strip -s "$WERCKER_OUTPUT_DIR/kubectl"
+                rm -r "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/help"
                 rm "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/kubectl"
                 chmod ugo+rx "$WERCKER_OUTPUT_DIR/kubectl"
                 ln -s "$WERCKER_OUTPUT_DIR/kubectl" "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/kubectl"
