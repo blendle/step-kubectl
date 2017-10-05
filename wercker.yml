@@ -6,11 +6,11 @@ build:
         - script:
             name: config
             code: |
-                GCLOUD_VERSION="150.0.0-linux-x86_64"
+                GCLOUD_VERSION="174.0.0-linux-x86_64"
                 export GCLOUD_DIRNAME="google-cloud-sdk"
-                export KUBERNETES_VERSION="1.6.1"
-                export KUBERNETES_SHA256="4d36675f8239d31c0831cfcb956eb07604cf70a7739233597bce0e87e46c42b0"
-                export GCLOUD_SHA256="8a2d203ff12e0d52cc8aa54f09b3c2a8e7db86737284fa90d2ae453cae52c6e0"
+                export KUBERNETES_VERSION="1.7.5"
+                export KUBERNETES_SHA256="c4fd350f9fac76121dda479c1ceba2d339b19f8806aa54207eff55c9c6896724"
+                export GCLOUD_SHA256="b8e6520aa071d59b31d4477e81be5d240205c5307f6b0072765c827a7d969b58"
                 export GCLOUD_FILENAME="${GCLOUD_DIRNAME}-${GCLOUD_VERSION}.tar.gz"
                 export GCLOUD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${GCLOUD_FILENAME}"
                 echo "Installing version $KUBERNETES_VERSION of kubernetes and ${GCLOUD_VERSION} of the Google Cloud SDK"
